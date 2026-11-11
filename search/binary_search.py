@@ -26,6 +26,34 @@ def iterative_search(data, size, term):
     return 
 
 
+def interpolation_search(data, size, term):
+    
+    start = 0
+    end = size - 1
+
+    while start <= end:
+
+        if data[start] == data[end]:
+            if data[start] == term:
+                return start
+            return
+
+        mid = start + ( (term - data[start]) * (end - start) // (data[end] - data[start]) )
+
+        if mid < start or mid > end:
+            return
+        
+        if data[mid] == term:
+            return mid
+        
+        if data[mid] > term:
+            end = mid - 1
+
+        elif data[mid] < term:
+            start = mid + 1
+    return 
+
+
 def recursive_search(data, size, term, start=0):
 
     end = size - 1
